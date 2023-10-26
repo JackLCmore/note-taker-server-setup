@@ -25,17 +25,25 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 // get request to fetch our api to send notes from db.json, route: '/api/notes'
-app.get('/api/notes',(req,res)=>
-  
-);
+app.get('/api/notes',(req, res)=>{
+// console.log(db)
+//   console.log(req);
+//   console.log(res);
+// return res.json;
+return res.json(db);
+});
 // post request to fetch our api to modify with parsed req.body data and push post to db.json with fs.writeFile, route: '/api/notes', return res.json;
-app.post('/api/notes', (req, res) => 
-
-);
+app.post('/api/notes', (req, res) => {
+    // console.log(req);
+    // console.log(res);
+    // return res.json;
+});
 // delete request to delete specific note, *EXTRA CRED* remove specific data from db.json and push with fs.writeFile,  route: '/api/notes/:notes_id', return res.json;
-app.delete('/api/notes', (req, res) =>
-
-);
+app.delete('/api/notes', (req, res) =>{
+    // console.log(req);
+    // console.log(res);
+    // return res.json;
+});
 // app.listen
 app.listen(port, () =>
 console.log(`App listening at http://localhost:${port}`));
