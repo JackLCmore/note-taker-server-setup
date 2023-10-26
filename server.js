@@ -1,6 +1,7 @@
 // import express module to our server
 const express = require('express');
 // import require("./db/db.json")
+const uuid = require('./helpers/uuid')
 const db = require('./db/db.json');
 const fs = require('fs');
 const path = require('path');
@@ -30,20 +31,36 @@ app.get('/api/notes',(req, res)=>{
 //   console.log(req);
 //   console.log(res);
 // return res.json;
-return res.json(db);
+res.json(db);
 });
 // post request to fetch our api to modify with parsed req.body data and push post to db.json with fs.writeFile, route: '/api/notes', return res.json;
 app.post('/api/notes', (req, res) => {
-    // console.log(req);
-    // console.log(res);
-    // return res.json;
+    // console.log(req.body)
+    // newDB.push(req.body);
+    // console.log(newDB);
+    const { title, text, id } = req.body;
+      
+    const newNote = {
+        title,
+        text,
+        id: uuid(),
+    };
+
+    db.push(newNote);
+
+    fs.writeFile('./db/db.json', JSON.stringify(db) , (err) => {
+    err ? console.error(err) : console.log('note logged')
+    // res.json(db);
+    });
+
+    res.json(db);
 });
 // delete request to delete specific note, *EXTRA CRED* remove specific data from db.json and push with fs.writeFile,  route: '/api/notes/:notes_id', return res.json;
-app.delete('/api/notes', (req, res) =>{
-    // console.log(req);
-    // console.log(res);
-    // return res.json;
-});
+// app.delete('/api/notes/${this.id}', (req, res) =>{
+//     // console.log(req);
+//     // console.log(res);
+//     // return res.json;
+// });
 // app.listen
 app.listen(port, () =>
 console.log(`App listening at http://localhost:${port}`));
