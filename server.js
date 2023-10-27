@@ -56,7 +56,7 @@ app.post('/api/notes', (req, res) => {
     res.json(db);
 });
 // delete request to delete specific note, *EXTRA CRED* remove specific data from db.json and push with fs.writeFile,  route: '/api/notes/:notes_id', return res.json;
-// app.delete('/api/notes/${this.id}', (req, res) =>{
+// app.delete('/api/notes/:note_id', (req, res) =>{
 //     // console.log(req);
 //     // console.log(res);
 //     // return res.json;
