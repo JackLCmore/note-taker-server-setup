@@ -5,7 +5,7 @@ const uuid = require('./helpers/uuid')
 const db = require('./db/db.json');
 const fs = require('fs');
 const path = require('path');
-const port = 3001;
+const port = process.env.PORT || 3001;
 // create app variable pointing to new express object(express())
 const app = express();
 // app.use(*middleware*){
